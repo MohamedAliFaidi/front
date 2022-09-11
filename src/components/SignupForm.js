@@ -2,7 +2,18 @@ import authStore from "../stores/authStore";
 
 export default function SignupForm() {
     const store = authStore();
-  return  <form onSubmit={store.signup}>
+    const handleSignup = (e) => {
+        e.preventDefault();
+        store.signup();
+
+
+
+    }
+
+
+
+
+  return  <form onSubmit={handleSignup}>
       <input
         onChange={store.updateSignupF}
         value={store.signupF.email}

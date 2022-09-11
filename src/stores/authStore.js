@@ -52,10 +52,11 @@ const authStore = create((set) => ({
     }
   },
 
-  signup: async (e) => {
-    e.preventDefault();
+  signup: async  () => {
+    const { signupF } = authStore.getState();
+    const res = await axios.post("/signup", signupF, { withCredentials: true });
 
-    console.log("signup");
+    console.log(res);
   }
 }));
 
