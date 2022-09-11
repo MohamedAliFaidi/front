@@ -1,19 +1,18 @@
 import authStore from "../stores/authStore";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupForm() {
-    const store = authStore();
-    const handleSignup = (e) => {
-        e.preventDefault();
-        store.signup();
+  const store = authStore();
+  const navigate = useNavigate();
+  const  handleSignup = async  (e) => {
+    e.preventDefault();
+    await store.signup();
+    navigate("/");
 
+  };
 
-
-    }
-
-
-
-
-  return  <form onSubmit={handleSignup}>
+  return (
+    <form onSubmit={handleSignup}>
       <input
         onChange={store.updateSignupF}
         value={store.signupF.email}
@@ -29,5 +28,6 @@ export default function SignupForm() {
         name="password"
       />
       <button type="submit">Signup</button>
-    </form>;
+    </form>
+  );
 }
