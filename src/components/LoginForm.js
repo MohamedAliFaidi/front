@@ -5,16 +5,16 @@ export default function LoginForm() {
   return (
     <form>
       <input
-        value={store.loginF.email}
         onChange={store.updateLoginF}
+        value={store.loginF.email}
         type="text"
         placeholder="email"
         name="email"
 
       />
       <input
-        value={store.loginF.password}
         onChange={store.updateLoginF}
+        value={store.loginF.password}
         type="password"
         placeholder="password"
         name="password"

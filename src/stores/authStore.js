@@ -1,14 +1,25 @@
-import  create from "zustand";
-import axios from "axios";
+import create from "zustand";
 
 const authStore = create((set) => ({
   loginF: { email: "", password: "" },
   updateLoginF: (e) => {
+    const { loginF }= authStore.getState();
+
     const { name, value } = e.target;
-    const { loginF } = authStore.loginF.getState();
-    set({
-      loginF: { ...loginF, [name]: value },
-    });
+    // set((state) => {
+    //   return {
+    //     LoginF: {
+    //       ...state.loginF,
+    //       [name]: value,
+    //     },
+    //   };
+    // });
+    set ({
+      loginF:{
+        ...loginF,
+        [name]: value,
+      }
+    })
   },
 }));
 
