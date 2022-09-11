@@ -1,5 +1,6 @@
-import authStore from "../stores/authStore"
-import { useEffect } from "react"
+import authStore from "../stores/authStore";
+import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 export default function RequireAuth(props) {
     const store = authStore();
    
@@ -9,10 +10,12 @@ export default function RequireAuth(props) {
         }
     }, []);
 
+    if (store.loggedIn === null){
+        return  <div>Loading...</div>
+    }
 
-
-    if (!store.loggedIn) {
-  return <h1>Not Logged In</h1>;
+    if (store.loggedIn===false) {
+  return <Navigate to="/login" />;
 
 }
    return <div>{props.children}</div>
