@@ -1,4 +1,5 @@
 import create from "zustand";
+import axios from "axios";
 
 const authStore = create((set) => ({
   loginF: { email: "", password: "" },
@@ -21,6 +22,14 @@ const authStore = create((set) => ({
       }
     })
   },
+ login : async (e) => {
+  e.preventDefault();
+  const { loginF} = authStore.getState();
+ const res =await axios.post('/login', loginF , {withCredentials: true});
+  console.log(res);
+ }
+  
+
 }));
 
 export default authStore;

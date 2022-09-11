@@ -3,7 +3,7 @@ import authStore from "../stores/authStore";
 export default function LoginForm() {
   const store = authStore();
   return (
-    <form>
+    <form onSubmit={store.login}>
       <input
         onChange={store.updateLoginF}
         value={store.loginF.email}
