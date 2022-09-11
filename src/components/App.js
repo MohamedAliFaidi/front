@@ -1,5 +1,5 @@
 import NotesPage from "../pages/NotesPage";
-import Login from "../pages/Login";
+import LoginPage from "../pages/LoginPage";
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
 
    <Routes>
    <Route path="/" element={<NotesPage/>}/>
-   <Route path="/login" element={<Login/>}/>
+   <Route path="/login" element={<LoginPage/>}/>
  
 
    </Routes>
