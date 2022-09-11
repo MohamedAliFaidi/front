@@ -5,18 +5,14 @@ const authStore = create((set) => ({
   loggedIn: null,
 
   loginF: { email: "", password: "" },
+
+  signupF: { email: "", password: "" },
+
   updateLoginF: (e) => {
     const { loginF } = authStore.getState();
 
     const { name, value } = e.target;
-    // set((state) => {
-    //   return {
-    //     LoginF: {
-    //       ...state.loginF,
-    //       [name]: value,
-    //     },
-    //   };
-    // });
+
     set({
       loginF: {
         ...loginF,
@@ -24,6 +20,20 @@ const authStore = create((set) => ({
       },
     });
   },
+
+  updateSignupF: (e) => {
+    const { signupF } = authStore.getState();
+
+    const { name, value } = e.target;
+
+    set({
+      signupF: {
+        ...signupF,
+        [name]: value,
+      },
+    });
+  },
+
   login: async () => {
     const { loginF } = authStore.getState();
     const res = await axios.post("/login", loginF, { withCredentials: true });
@@ -34,13 +44,19 @@ const authStore = create((set) => ({
 
   checkAuth: async () => {
     try {
-      const res = await axios.get("/checkAuth", { withCredentials: true });
+      await axios.get("/checkAuth", { withCredentials: true });
       set({ loggedIn: true });
     } catch (err) {
       console.log(err);
       set({ loggedIn: false });
     }
   },
+
+  signup: async (e) => {
+    e.preventDefault();
+
+    console.log("signup");
+  }
 }));
 
 export default authStore;
