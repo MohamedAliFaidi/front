@@ -35,12 +35,15 @@ const authStore = create((set) => ({
   },
 
   login: async () => {
+    try{
     const { loginF } = authStore.getState();
     const res = await axios.post("/login", loginF, { withCredentials: true });
     set({ loggedIn: true,loginF: { email: "", password: "" } });
 
-    console.log(res);
-  },
+  }catch(err){
+    alert("Wrong email or password")
+    console.log(err)
+  }},
 
   checkAuth: async () => {
     try {
@@ -48,22 +51,28 @@ const authStore = create((set) => ({
       set({ loggedIn: true });
     } catch (err) {
       console.log(err);
+      alert("wrong email or password");
       set({ loggedIn: false });
     }
   },
 
   signup: async  () => {
+    try{
     const { signupF } = authStore.getState();
     const res = await axios.post("/signup", signupF, { withCredentials: true });
    set ({
     signupF: { email: "", password: "" },
    })
     console.log(res);
-  },
+  }catch(err){
+    alert("user already exist")
+    console.log(err)
+  }},
 
   logout: async () => {
     await axios.get("/logout", { withCredentials: true });
     set({ loggedIn: false });
+    alert("You have been logged out");
 
   }
 }));

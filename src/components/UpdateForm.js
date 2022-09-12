@@ -12,18 +12,18 @@ export default  function UpdateForm() {
  
         <div>
           <h2>update</h2>
-          <form onSubmit={store.updateNote}>
-            <input
+          <form style={{backroundcolor:"grey"}} onSubmit={store.updateNote}>
+            <input  style={{width:"50%",backgroundColor:"white",opacity:0.8,borderRadius:15 }}
               onChange={store.handleUpdateForm}
               value={store.editForm.title}
               name="title"
-            />
-            <textarea
+            /><br></br>
+            <textarea  style={{width:"50%",backgroundColor:"white",opacity:0.8,borderRadius:15 }}
               onChange={store.handleUpdateForm}
               value={store.editForm.body}
               name="body"
-            />
-            <button type="submit">Update</button>
+            /><br></br>
+            <button style={{background:'#FFE4E1'}} type="submit">Update</button>
           </form>
         </div>
   );
